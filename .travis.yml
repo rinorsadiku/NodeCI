@@ -23,7 +23,7 @@ before-install:
 install: # Commands to be executed inside the command line of the virtual machine of travis
   - npm install # install depen.
   - npm run build # build both: server and client
+script: # start up our server and run tests
   - nohup npm run start &
   - sleep 3
-  # - npm run test
-# script: # start up our server and run tests
+  - npm run test
