@@ -23,5 +23,5 @@ install: # Commands to be executed inside the command line of the virtual machin
   - npm run build # build both: server and client
 script: # start up our server and run tests
   - nohup npm run start &
-  - sleep 5
+  - sleep 3
   - npm run test
