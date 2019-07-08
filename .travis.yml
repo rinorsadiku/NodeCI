@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - '8'
+dist: trusty # the operating system of choice that we want to run our tests
+services: # the services that our application depends upon
+  - mongodb
+  - redis-server
+env:
+  - NODE_ENV=ci PORT=3000
+cache: # Everytime the test runs, travis has to install all of the dependencies in our project, that's why we are caching them at the beginning so that we don't have to install them everytime we run tests
+  directories:
+    - node_modules
+    - client/node_modules
+install: # Commands to be executed inside the command line of the virtual machine of travis
+  - npm install # install depen.
+  - npm run build # build both: server and client
+script: # start up our server and run tests
+  - nohup npm run start &
+  - sleep 5
+  - npm run test
