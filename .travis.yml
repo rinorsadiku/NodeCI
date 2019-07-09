@@ -4,7 +4,6 @@ node_js:
 dist: trusty # the operating system of choice that we want to run our tests
 sudo: required
 addons:
-  chrome: stable
   apt:
     packages:
       - libnss3
