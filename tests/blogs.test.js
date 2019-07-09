@@ -18,7 +18,7 @@ describe('When logged in', async () => {
 		await page.click('a.btn-floating');
 	});
 
-	xtest('can see blog create form', async () => {
+	test('can see blog create form', async () => {
 		const label = await page.getContentsOf('form label');
 
 		expect(label).toEqual('Blog Title');
@@ -31,13 +31,13 @@ describe('When logged in', async () => {
 			await page.click('form button');
 		});
 
-		xtest('submitting takes user to review screen', async () => {
+		test('submitting takes user to review screen', async () => {
 			const text = await page.getContentsOf('h5');
 
 			expect(text).toEqual('Please confirm your entries');
 		});
 
-		xtest('submitting then saving adds blog to index page', async () => {
+		test('submitting then saving adds blog to index page', async () => {
 			await page.click('button.green');
 
 			await page.waitFor('.card:last-child span');
@@ -55,7 +55,7 @@ describe('When logged in', async () => {
 			await page.click('form button');
 		});
 
-		xtest('the form shows an error message', async () => {
+		test('the form shows an error message', async () => {
 			const titleError = await page.getContentsOf('.title .red-text');
 			const contentError = await page.getContentsOf('.content .red-text');
 
@@ -81,7 +81,7 @@ describe('When NOT logged in', async () => {
 		}
 	];
 
-	xtest('blog related actions are prohibited', async () => {
+	test('blog related actions are prohibited', async () => {
 		const results = await page.execRequests(actions);
 
 		for (let result of results) {
