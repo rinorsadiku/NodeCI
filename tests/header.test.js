@@ -13,13 +13,13 @@ afterEach(async () => {
 	await page.close();
 });
 
-test('the header logo has the correct text', async () => {
+xxtest('the header logo has the correct text', async () => {
 	const text = await page.getContentsOf('a.brand-logo');
 
 	expect(text).toEqual('Blogster');
 });
 
-test('clicking login button starts oAuth flow', async () => {
+xtest('clicking login button starts oAuth flow', async () => {
 	await page.click('.right a');
 
 	const url = await page.url();
@@ -28,11 +28,15 @@ test('clicking login button starts oAuth flow', async () => {
 	expect(url).toMatch(/accounts\.google\.com/);
 });
 
-test('when signed in, shows logout button', async () => {
+xtest('when signed in, shows logout button', async () => {
 	// Navigating to localhost:3000 and setting session cookies
 	await page.login();
 
 	const text = await page.getContentsOf('a[href="/auth/logout"]');
 
 	expect(text).toEqual('Logout');
+});
+
+test.only('travis ci test works', () => {
+	expect('rinor').toEqual('rinor');
 });
