@@ -7,4 +7,4 @@
 // // Telling mongoose what implementation of promises we should use
 // mongoose.Promise = global.Promise;
 // mongoose.connect(keys.mongoURI, { useMongoClient: true });
-jest.setTimeout(30000);
+jest.setTimeout(50000);
