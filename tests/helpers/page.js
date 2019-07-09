@@ -4,6 +4,7 @@ const sessionFactory = require('../factories/sessionFactory');
 class Page {
 	static async build() {
 		const browser = await puppeteer.launch({
+			headless: true,
 			args: ['--no-sandbox', '--disable-setuid-sandbox'] // Decreases the time to run tests
 		});
 
