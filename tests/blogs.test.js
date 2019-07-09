@@ -81,7 +81,7 @@ describe('When NOT logged in', async () => {
 		}
 	];
 
-	test('blog related actions are prohibited', async () => {
+	xtest('blog related actions are prohibited', async () => {
 		const results = await page.execRequests(actions);
 
 		for (let result of results) {
