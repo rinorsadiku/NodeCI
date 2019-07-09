@@ -1,29 +1,20 @@
 language: node_js
 node_js:
   - '8'
-dist: trusty # the operating system of choice that we want to run our tests
-sudo: required
-addons:
-  apt:
-    packages:
-      - libnss3
-before-install:
-  - 'sysctl kernel.unprivileged_userns_clone=1'
-  - 'export DISPLAY=:99.0'
-  - 'sh -e /etc/init.d/xvfb start'
-services: # the services that our application depends upon
+dist: trusty
+services:
   - mongodb
   - redis-server
 env:
   - NODE_ENV=ci PORT=3000
-cache: # Everytime the test runs, travis has to install all of the dependencies in our project, that's why we are caching them at the beginning so that we don't have to install them everytime we run tests
+cache:
   directories:
     - node_modules
     - client/node_modules
-install: # Commands to be executed inside the command line of the virtual machine of travis
-  - npm install # install depen.
-  - npm run build # build both: server and client
-script: # start up our server and run tests
+install:
+  - npm install
+  - npm run build
+script:
   - nohup npm run start &
   - sleep 3
   - npm run test
